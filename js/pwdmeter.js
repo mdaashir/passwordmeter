@@ -99,7 +99,7 @@ function chkPass(pwd) {
 	var sComplexity = 'Too Short';
 	var nMinPwdLen = 8;
 	if (pwd) {
-		nScore = parseInt(pwd.length * nMultLength);
+		nScore = pwd.length * nMultLength;
 		nLength = pwd.length;
 		var arrPwd = pwd.replace(/\s+/g, '').split(/\s*/);
 		var arrPwdLen = arrPwd.length;
@@ -108,45 +108,45 @@ function chkPass(pwd) {
 		for (var a = 0; a < arrPwdLen; a++) {
 			if (arrPwd[a].match(/[A-Z]/g)) {
 				if (nTmpAlphaUC !== '') {
-					if (nTmpAlphaUC + 1 == a) {
+					if (parseInt(nTmpAlphaUC) + 1 == a) {
 						nConsecAlphaUC++;
 						nConsecCharType++;
 					}
 				}
-				nTmpAlphaUC = a;
+				nTmpAlphaUC = a.toString();
 				nAlphaUC++;
 			} else if (arrPwd[a].match(/[a-z]/g)) {
 				if (nTmpAlphaLC !== '') {
-					if (nTmpAlphaLC + 1 == a) {
+					if (parseInt(nTmpAlphaLC) + 1 == a) {
 						nConsecAlphaLC++;
 						nConsecCharType++;
 					}
 				}
-				nTmpAlphaLC = a;
+				nTmpAlphaLC = a.toString();
 				nAlphaLC++;
 			} else if (arrPwd[a].match(/[0-9]/g)) {
 				if (a > 0 && a < arrPwdLen - 1) {
 					nMidChar++;
 				}
 				if (nTmpNumber !== '') {
-					if (nTmpNumber + 1 == a) {
+					if (parseInt(nTmpNumber) + 1 == a) {
 						nConsecNumber++;
 						nConsecCharType++;
 					}
 				}
-				nTmpNumber = a;
+				nTmpNumber = a.toString();
 				nNumber++;
 			} else if (arrPwd[a].match(/[^a-zA-Z0-9_]/g)) {
 				if (a > 0 && a < arrPwdLen - 1) {
 					nMidChar++;
 				}
 				if (nTmpSymbol !== '') {
-					if (nTmpSymbol + 1 == a) {
+					if (parseInt(nTmpSymbol) + 1 == a) {
 						nConsecSymbol++;
 						nConsecCharType++;
 					}
 				}
-				nTmpSymbol = a;
+				nTmpSymbol = a.toString();
 				nSymbol++;
 			}
 			/* Internal loop through password to check for repeat characters */
@@ -173,7 +173,7 @@ function chkPass(pwd) {
 
 		/* Check for sequential alpha string patterns (forward and reverse) */
 		for (var s = 0; s < 23; s++) {
-			var sFwd = sAlphas.substring(s, parseInt(s + 3));
+			var sFwd = sAlphas.substring(s, parseInt(s.toString() + 3));
 			var sRev = sFwd.strReverse();
 			if (
 				pwd.toLowerCase().indexOf(sFwd) != -1 ||
@@ -186,7 +186,7 @@ function chkPass(pwd) {
 
 		/* Check for sequential numeric string patterns (forward and reverse) */
 		for (var s = 0; s < 8; s++) {
-			var sFwd = sNumerics.substring(s, parseInt(s + 3));
+			var sFwd = sNumerics.substring(s, parseInt(s.toString() + 3));
 			var sRev = sFwd.strReverse();
 			if (
 				pwd.toLowerCase().indexOf(sFwd) != -1 ||
@@ -199,7 +199,7 @@ function chkPass(pwd) {
 
 		/* Check for sequential symbol string patterns (forward and reverse) */
 		for (var s = 0; s < 8; s++) {
-			var sFwd = sSymbols.substring(s, parseInt(s + 3));
+			var sFwd = sSymbols.substring(s, parseInt(s.toString() + 3));
 			var sRev = sFwd.strReverse();
 			if (
 				pwd.toLowerCase().indexOf(sFwd) != -1 ||
@@ -215,24 +215,24 @@ function chkPass(pwd) {
 		/* General point assignment */
 		$('nLengthBonus').innerHTML = '+ ' + nScore;
 		if (nAlphaUC > 0 && nAlphaUC < nLength) {
-			nScore = parseInt(nScore + (nLength - nAlphaUC) * 2);
-			sAlphaUC = '+ ' + parseInt((nLength - nAlphaUC) * 2);
+			nScore = nScore + (nLength - nAlphaUC) * 2;
+			sAlphaUC = '+ ' + (nLength - nAlphaUC) * 2;
 		}
 		if (nAlphaLC > 0 && nAlphaLC < nLength) {
-			nScore = parseInt(nScore + (nLength - nAlphaLC) * 2);
-			sAlphaLC = '+ ' + parseInt((nLength - nAlphaLC) * 2);
+			nScore = nScore + (nLength - nAlphaLC) * 2;
+			sAlphaLC = '+ ' + (nLength - nAlphaLC) * 2;
 		}
 		if (nNumber > 0 && nNumber < nLength) {
-			nScore = parseInt(nScore + nNumber * nMultNumber);
-			sNumber = '+ ' + parseInt(nNumber * nMultNumber);
+			nScore = nScore + nNumber * nMultNumber;
+			sNumber = '+ ' + nNumber * nMultNumber;
 		}
 		if (nSymbol > 0) {
-			nScore = parseInt(nScore + nSymbol * nMultSymbol);
-			sSymbol = '+ ' + parseInt(nSymbol * nMultSymbol);
+			nScore = nScore + nSymbol * nMultSymbol;
+			sSymbol = '+ ' + nSymbol * nMultSymbol;
 		}
 		if (nMidChar > 0) {
-			nScore = parseInt(nScore + nMidChar * nMultMidChar);
-			sMidChar = '+ ' + parseInt(nMidChar * nMultMidChar);
+			nScore = nScore + nMidChar * nMultMidChar;
+			sMidChar = '+ ' + nMidChar * nMultMidChar;
 		}
 		$('nAlphaUCBonus').innerHTML = sAlphaUC;
 		$('nAlphaLCBonus').innerHTML = sAlphaLC;
@@ -243,50 +243,50 @@ function chkPass(pwd) {
 		/* Point deductions for poor practices */
 		if ((nAlphaLC > 0 || nAlphaUC > 0) && nSymbol === 0 && nNumber === 0) {
 			// Only Letters
-			nScore = parseInt(nScore - nLength);
+			nScore = nScore - nLength;
 			nAlphasOnly = nLength;
 			sAlphasOnly = '- ' + nLength;
 		}
 		if (nAlphaLC === 0 && nAlphaUC === 0 && nSymbol === 0 && nNumber > 0) {
 			// Only Numbers
-			nScore = parseInt(nScore - nLength);
+			nScore = nScore - nLength;
 			nNumbersOnly = nLength;
 			sNumbersOnly = '- ' + nLength;
 		}
 		if (nRepChar > 0) {
 			// Same character exists more than once
-			nScore = parseInt(nScore - nRepInc);
+			nScore = nScore - nRepInc;
 			sRepChar = '- ' + nRepInc;
 		}
 		if (nConsecAlphaUC > 0) {
 			// Consecutive Uppercase Letters exist
-			nScore = parseInt(nScore - nConsecAlphaUC * nMultConsecAlphaUC);
-			sConsecAlphaUC = '- ' + parseInt(nConsecAlphaUC * nMultConsecAlphaUC);
+			nScore = nScore - nConsecAlphaUC * nMultConsecAlphaUC;
+			sConsecAlphaUC = '- ' + nConsecAlphaUC * nMultConsecAlphaUC;
 		}
 		if (nConsecAlphaLC > 0) {
 			// Consecutive Lowercase Letters exist
-			nScore = parseInt(nScore - nConsecAlphaLC * nMultConsecAlphaLC);
-			sConsecAlphaLC = '- ' + parseInt(nConsecAlphaLC * nMultConsecAlphaLC);
+			nScore = nScore - nConsecAlphaLC * nMultConsecAlphaLC;
+			sConsecAlphaLC = '- ' + nConsecAlphaLC * nMultConsecAlphaLC;
 		}
 		if (nConsecNumber > 0) {
 			// Consecutive Numbers exist
-			nScore = parseInt(nScore - nConsecNumber * nMultConsecNumber);
-			sConsecNumber = '- ' + parseInt(nConsecNumber * nMultConsecNumber);
+			nScore = nScore - nConsecNumber * nMultConsecNumber;
+			sConsecNumber = '- ' + nConsecNumber * nMultConsecNumber;
 		}
 		if (nSeqAlpha > 0) {
 			// Sequential alpha strings exist (3 characters or more)
-			nScore = parseInt(nScore - nSeqAlpha * nMultSeqAlpha);
-			sSeqAlpha = '- ' + parseInt(nSeqAlpha * nMultSeqAlpha);
+			nScore = nScore - nSeqAlpha * nMultSeqAlpha;
+			sSeqAlpha = '- ' + nSeqAlpha * nMultSeqAlpha;
 		}
 		if (nSeqNumber > 0) {
 			// Sequential numeric strings exist (3 characters or more)
-			nScore = parseInt(nScore - nSeqNumber * nMultSeqNumber);
-			sSeqNumber = '- ' + parseInt(nSeqNumber * nMultSeqNumber);
+			nScore = nScore - nSeqNumber * nMultSeqNumber;
+			sSeqNumber = '- ' + nSeqNumber * nMultSeqNumber;
 		}
 		if (nSeqSymbol > 0) {
 			// Sequential symbol strings exist (3 characters or more)
-			nScore = parseInt(nScore - nSeqSymbol * nMultSeqSymbol);
-			sSeqSymbol = '- ' + parseInt(nSeqSymbol * nMultSeqSymbol);
+			nScore = nScore - nSeqSymbol * nMultSeqSymbol;
+			sSeqSymbol = '- ' + nSeqSymbol * nMultSeqSymbol;
 		}
 		$('nAlphasOnlyBonus').innerHTML = sAlphasOnly;
 		$('nNumbersOnlyBonus').innerHTML = sNumbersOnly;
@@ -307,15 +307,15 @@ function chkPass(pwd) {
 			var oBonus = $(arrCharsIds[c] + 'Bonus');
 			$(arrCharsIds[c]).innerHTML = arrChars[c];
 			if (arrCharsIds[c] == 'nLength') {
-				var minVal = parseInt(nMinPwdLen - 1);
+				var minVal = nMinPwdLen - 1;
 			} else {
 				var minVal = 0;
 			}
-			if (arrChars[c] == parseInt(minVal + 1)) {
+			if (arrChars[c] == minVal + 1) {
 				nReqChar++;
 				oImg.className = 'pass';
 				oBonus.parentNode.className = 'pass';
-			} else if (arrChars[c] > parseInt(minVal + 1)) {
+			} else if (arrChars[c] > minVal + 1) {
 				nReqChar++;
 				oImg.className = 'exceed';
 				oBonus.parentNode.className = 'exceed';
@@ -332,8 +332,8 @@ function chkPass(pwd) {
 		}
 		if (nRequirements > nMinReqChars) {
 			// One or more required characters exist
-			nScore = parseInt(nScore + nRequirements * 2);
-			sRequirements = '+ ' + parseInt(nRequirements * 2);
+			nScore = nScore + nRequirements * 2;
+			sRequirements = '+ ' + nRequirements * 2;
 		}
 		$('nRequirementsBonus').innerHTML = sRequirements;
 
@@ -350,10 +350,10 @@ function chkPass(pwd) {
 			} else {
 				var minVal = 0;
 			}
-			if (arrChars[c] == parseInt(minVal + 1)) {
+			if (arrChars[c] == minVal + 1) {
 				oImg.className = 'pass';
 				oBonus.parentNode.className = 'pass';
-			} else if (arrChars[c] > parseInt(minVal + 1)) {
+			} else if (arrChars[c] > minVal + 1) {
 				oImg.className = 'exceed';
 				oBonus.parentNode.className = 'exceed';
 			} else {
@@ -418,7 +418,7 @@ function chkPass(pwd) {
 		}
 
 		/* Display updated score criteria to client */
-		oScorebar.style.backgroundPosition = '-' + parseInt(nScore * 4) + 'px';
+		oScorebar.style.backgroundPosition = '-' + nScore * 4 + 'px';
 		oScore.innerHTML = nScore + '%';
 		oComplexity.innerHTML = sComplexity;
 	} else {
