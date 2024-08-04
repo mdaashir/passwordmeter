@@ -63,19 +63,12 @@ function chkPass(pwd) {
 		nSeqNumber = 0,
 		nSeqSymbol = 0,
 		nSeqChar = 0,
-		nReqChar = 0,
-		nMultConsecCharType = 0;
-	var nMultRepChar = 1,
-		nMultConsecSymbol = 1;
+		nReqChar = 0;
 	var nMultMidChar = 2,
-		nMultRequirements = 2,
 		nMultConsecAlphaUC = 2,
 		nMultConsecAlphaLC = 2,
 		nMultConsecNumber = 2;
-	var nReqCharType = 3,
-		nMultAlphaUC = 3,
-		nMultAlphaLC = 3,
-		nMultSeqAlpha = 3,
+	var nMultSeqAlpha = 3,
 		nMultSeqNumber = 3,
 		nMultSeqSymbol = 3;
 	var nMultLength = 4,
@@ -104,13 +97,7 @@ function chkPass(pwd) {
 	var sNumerics = '01234567890';
 	var sSymbols = ')!@#$%^&*()';
 	var sComplexity = 'Too Short';
-	var sStandards = 'Below';
 	var nMinPwdLen = 8;
-	if (document.all) {
-		var nd = 0;
-	} else {
-		var nd = 1;
-	}
 	if (pwd) {
 		nScore = parseInt(pwd.length * nMultLength);
 		nLength = pwd.length;
