@@ -1,21 +1,28 @@
 body {
 	color: #000;
-	font-family: Verdana,'Trebuchet MS','Lucida Grande', Arial, sans-serif;
-	font-size: .8em;
+	font-family: Verdana, 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+	font-size: 0.8em;
 	line-height: 1.25em;
 	margin: 0;
 	padding: 0;
 	text-align: center;
 }
-form,input,select,textarea {
-	margin:0;
-	padding:0;
+form,
+input,
+select,
+textarea {
+	margin: 0;
+	padding: 0;
 }
-h1,h2,h3,h4,h5,h6 
-{
-	font-family:Georgia, Tahoma, Arial, Serif;
-	font-weight:normal;
-	line-height:1.6em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Georgia, Tahoma, Arial, Serif;
+	font-weight: normal;
+	line-height: 1.6em;
 	padding: 0;
 	margin: 0;
 }
@@ -24,7 +31,8 @@ input {
 	margin-bottom: 2px;
 	padding: 1px;
 }
-ol,ul {
+ol,
+ul {
 	line-height: 1.4em;
 	margin-bottom: 4px;
 	margin-top: 4px;
@@ -69,12 +77,14 @@ th {
 #score {
 	color: #000;
 	font-size: 85%;
-	position:absolute;
+	position: absolute;
 	text-align: center;
 	width: 100px;
 	z-index: 10;
 }
-#score,#rating,#standards {
+#score,
+#rating,
+#standards {
 	font-weight: bold;
 }
 div.exceed {
@@ -93,7 +103,7 @@ div.warn {
 	background-image: url(../images/bg_strength_gradient.jpg);
 	background-repeat: no-repeat;
 	background-position: 0 0;
-	position:absolute;
+	position: absolute;
 	width: 100px;
 	z-index: 0;
 }
@@ -122,7 +132,10 @@ div.warn {
 	margin-left: 0;
 	padding-left: 0;
 }
-div.fail,div.pass,div.exceed,div.warn {
+div.fail,
+div.pass,
+div.exceed,
+div.warn {
 	background-repeat: no-repeat;
 	background-position: left top;
 	height: 16px;
@@ -130,16 +143,19 @@ div.fail,div.pass,div.exceed,div.warn {
 	margin-right: auto;
 	width: 16px;
 }
-td.exceed,td.fail,td.pass,td.warn {
+td.exceed,
+td.fail,
+td.pass,
+td.warn {
 	color: #fff;
 	font-weight: bold;
 	text-align: center;
 }
 td.exceed {
-	background: #1C60A4;
+	background: #1c60a4;
 }
 td.fail {
-	background: #C00;
+	background: #c00;
 }
 td.pass {
 	background: #093;
@@ -156,7 +172,8 @@ div.box {
 	white-space: nowrap;
 	width: 38px;
 }
-div.boxMinus,div.boxPlus {
+div.boxMinus,
+div.boxPlus {
 	border: none;
 	color: #fff;
 	font-weight: bold;
@@ -215,144 +232,134 @@ td.footnote {
 	text-align: right;
 }
 div.xtend {
-	clear: both !important; 
-	line-height: 0; 
+	clear: both !important;
+	line-height: 0;
 	height: 0;
 }
-a:link, a:visited 
-{
-	color:#459045;
-	text-decoration:none;
-	border-bottom:none;
+a:link,
+a:visited {
+	color: #459045;
+	text-decoration: none;
+	border-bottom: none;
 }
-a:hover, a:active 
-{
-	text-decoration:none;
+a:hover,
+a:active {
+	text-decoration: none;
 	border-bottom: 1px solid;
 }
 #header {
-background:url(../images/top.gif) top repeat-x;
-height:145px;
-margin:0;
-padding:0;
-width:100%;
+	background: url(../images/top.gif) top repeat-x;
+	height: 145px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 #logo {
-height:100px;
-width:900px;
-margin:0 auto;
+	height: 100px;
+	width: 900px;
+	margin: 0 auto;
 }
 #blogname {
-height:30px;
-padding-left:12px;
-padding-top:28px;
-text-align:left;
+	height: 30px;
+	padding-left: 12px;
+	padding-top: 28px;
+	text-align: left;
 }
 h1#blogname a {
-color:#fff;
-font-size:1.3em;
+	color: #fff;
+	font-size: 1.3em;
 }
-#navigation 
-{
-	clear:both;
-	height:24px;
-	margin:0 auto;
-	padding:0 10px;
-	text-align:center;
-	width:880px;
-	font-size:1.1em;
+#navigation {
+	clear: both;
+	height: 24px;
+	margin: 0 auto;
+	padding: 0 10px;
+	text-align: center;
+	width: 880px;
+	font-size: 1.1em;
 }
 #navigation a:link,
-#navigation a:visited 
-{
-	background:#FFF url(../images/active1.html) left bottom no-repeat;
-	color:#fff;
-	height:24px;
-	margin-right:2px;
-	padding-left:12px;
-	text-decoration:none;
-	border:none;
+#navigation a:visited {
+	background: #fff url(../images/active1.html) left bottom no-repeat;
+	color: #fff;
+	height: 24px;
+	margin-right: 2px;
+	padding-left: 12px;
+	text-decoration: none;
+	border: none;
 }
 #navigation a:link,
 #navigation a:link span,
 #navigation a:visited,
-#navigation a:visited span 
-{
-	cursor:hand;
-	display:block;
-	float:left;
-	border:none;
+#navigation a:visited span {
+	cursor: pointer;
+	display: block;
+	float: left;
+	border: none;
 }
-#navigation li 
-{
-	line-height:23px;
-	float:left;
-	list-style:none;
-	margin:0;
+#navigation li {
+	line-height: 23px;
+	float: left;
+	list-style: none;
+	margin: 0;
 }
-#navigation a:hover 
-{
-	background:url(../images/active1.html) left bottom no-repeat;
-	color:#040;
-	height:24px;
-	padding-left:12px;
-	text-decoration:none;
-	border:none;
+#navigation a:hover {
+	background: url(../images/active1.html) left bottom no-repeat;
+	color: #040;
+	height: 24px;
+	padding-left: 12px;
+	text-decoration: none;
+	border: none;
 }
 #navigation .current_page_item a:link,
-#navigation .current_page_item a:visited 
-{
-	background:#FFF url(../images/current1.html) left bottom no-repeat;
-	color:#fff;
-	height:27px;
-	line-height:24px;
-	margin-right:2px;
-	padding-left:15px;
-	text-decoration:none;
-	border:none;
+#navigation .current_page_item a:visited {
+	background: #fff url(../images/current1.html) left bottom no-repeat;
+	color: #fff;
+	height: 27px;
+	line-height: 24px;
+	margin-right: 2px;
+	padding-left: 15px;
+	text-decoration: none;
+	border: none;
 }
-#navigation .current_page_item a:hover 
-{
-	background:#FFF url(../images/current1.html) left bottom no-repeat;
-	color:#AAC8E0;
-	height:27px;
-	margin-right:2px;
-	padding-left:15px;
-	text-decoration:none;
-	border:none;
+#navigation .current_page_item a:hover {
+	background: #fff url(../images/current1.html) left bottom no-repeat;
+	color: #aac8e0;
+	height: 27px;
+	margin-right: 2px;
+	padding-left: 15px;
+	text-decoration: none;
+	border: none;
 }
-#navigation ul 
-{
-	list-style:none;
-	margin:0;
-	padding:0;
+#navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 #navigation a:link span,
 #navigation a:visited span,
-#navigation a:hover span 
-{
-	background:url(../images/active2.html) right bottom no-repeat;
-	height:24px;
-	padding-right:12px;
-	border:none;
+#navigation a:hover span {
+	background: url(../images/active2.html) right bottom no-repeat;
+	height: 24px;
+	padding-right: 12px;
+	border: none;
 }
 #navigation .current_page_item a:link span,
 #navigation .current_page_item a:visited span,
-#navigation .current_page_item a:hover span 
-{
-	background:url(../images/current2.html) right bottom no-repeat;
-	height:27px;
-	padding-right:15px;
-	border:none;
+#navigation .current_page_item a:hover span {
+	background: url(../images/current2.html) right bottom no-repeat;
+	height: 27px;
+	padding-right: 15px;
+	border: none;
 }
 #footer {
-	background:#223344 url(../images/top.gif) bottom repeat-x;
+	background: #223344 url(../images/top.gif) bottom repeat-x;
 	clear: both;
 	height: 60px;
 	padding: 10px;
 	text-align: center;
-	margin:0 auto;
-	color:#ccc;
+	margin: 0 auto;
+	color: #ccc;
 }
 .advertTop {
 	margin: -30px 0 5px 0;
