@@ -1,0 +1,14 @@
+# Git related files
+.git
+.gitignore
+
+# Dockerfile itself
+Dockerfile
+.dockerignore
+
+# Other files that don't need to be in the image
+README.md
+LICENSE
+
+# Node modules if they exist
+node_modules/
